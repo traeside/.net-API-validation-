@@ -1,0 +1,13 @@
+var env_name=variables.get("env_name");
+var thisstatus=200;
+if (env_name.indexOf("Invalid")>=0){
+    log("using invalid enviorment");
+    thisstatus=401;
+}
+
+assert(response.status==thisstatus,"response code is "+thisstatus);
+
+if (response.status==200){
+    var data=JSON.parse(response.body);
+    assert(data.StatusCode==100,"status code is 100");
+}
